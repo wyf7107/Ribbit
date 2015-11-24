@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -16,7 +19,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    [Parse setApplicationId:@"jicIlrY0ZJqmGEoadQ7IwQgFd1RsUQZoDXlhFuyc" clientKey:@"rc9iGzvrzOVtrY1kHAfBsd0kP4h8pw8RXnEngCkF"];
+    
+    [self customizeUserInterface];
+    
     return YES;
 }
 
@@ -41,5 +48,41 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)customizeUserInterface{
+   // [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.553 green:0.435 blue:0.718 alpha:1.0]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navBarBackground"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+    
+    UITabBarController *tabBarController = (UITabBarController *) self.window.rootViewController;
+    UITabBar *tabBar = tabBarController.tabBar;
+    
+    UIBarItem *tabInbox = [tabBar.items objectAtIndex:0];
+    UIBarItem *tabFriends = [tabBar.items objectAtIndex:1];
+    UIBarItem *tabCamera = [tabBar.items objectAtIndex:2];
+    
+    
+    tabInbox.image = [[UIImage imageNamed:@"inbox"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+  
+    tabFriends.image = [[UIImage imageNamed:@"friends"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+
+    tabCamera.image = [[UIImage imageNamed:@"camera"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
+}
+
 
 @end
